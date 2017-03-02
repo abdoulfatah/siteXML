@@ -10,7 +10,8 @@
 
 		<!-- LISTE ENSEIGNEMENTS -->
 		<xsl:document href="www/parcours/listeEnseignements.html">
-			<html xmlns="http://www.w3.org/1999/xhtml">
+    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+    			<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 					<link rel="stylesheet" type="text/css" href="../../CSS/master.css" />
@@ -20,20 +21,20 @@
 				</head>
 				<body>
 					<div class="header">
-						<img src="../../CSS/CONTENTS/logo.png"></img>
+						<img alt ="image"  src="../../CSS/CONTENTS/logo.png"></img>
 						<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 					</div>
 					<div class="navigation">
 						<xsl:call-template name="menu">
-							<!-- Nous sommes à la racine -->
-							<xsl:with-param name="link">
-							</xsl:with-param>
+							<!-- Nous sommes a la racine -->
+							<xsl:with-param name="link" />
 						</xsl:call-template>
 					</div>
 					<div class="body">
 						<div class="titre">
 							Les unites triees par code
 						</div>
+						<div class="contenu">
 						<xsl:for-each select="//enseignement">
 							<a href="../enseignements/{@idEnseignement}.html">
 								[
@@ -41,9 +42,11 @@
 								]
 							</a>
 						</xsl:for-each>
+					</div>
 						<div class="titre">
 							Les unites du master
 						</div>
+						<div class="contenu">
 						<table>
 							<tr>
 								<td>Code</td>
@@ -65,12 +68,14 @@
 							</xsl:for-each>
 						</table>
 					</div>
+					</div>
 				</body>
 			</html>
 		</xsl:document>
 
 		<!-- LISTE INTERVENANTS -->
 		<xsl:document href="www/parcours/listeIntervenants.html">
+			     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
 			<html xmlns="http://www.w3.org/1999/xhtml">
 				<head>
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -79,26 +84,27 @@
 				</head>
 				<body>
 					<div class="header">
-						<img src="../../CSS/CONTENTS/logo.png"></img>
+						<img alt ="image" src="../../CSS/CONTENTS/logo.png"></img>
 						<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 					</div>
 					<div class="navigation">
 						<xsl:call-template name="menu">
-							<xsl:with-param name="link"></xsl:with-param>
-						</xsl:call-template>
+							<xsl:with-param name="link" />
+						</xsl:call-template> 
 					</div>
 					<center>
 						<h1>Liste des Intervenants du master</h1>
 					</center>
 					<div class="body">
-						<div class="titre">Une première liste</div>
-						<p>L'équipe pédagogique est en cours de constitution. Cette liste
-							sera complétée en mars et avril 2012.
+						<div class="titre">Une premiere liste</div>
+						<div class="contenu">
+						<p>L'equipe pedagogique est en cours de constitution. Cette liste
+							sera completee en mars et avril 2012.
 						</p>
 						<table>
 							<tr>
 								<td>Nom</td>
-								<td>Téléphone</td>
+								<td>Telephone</td>
 								<td>Courriel</td>
 								<td>Etablissement</td>
 							</tr>
@@ -122,15 +128,17 @@
 							</xsl:for-each>
 						</table>
 					</div>
+					</div>
 				</body>
 			</html>
 		</xsl:document>
 
 
 
-		<!-- Génération intervenants HTML -->
+		<!-- Generation intervenants HTML -->
 		<xsl:for-each select="//intervenant">
 			<xsl:document href="www/intervenants/{@idIntervenant}.html">
+				     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
 				<html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -141,22 +149,20 @@
 					</head>
 					<body>
 						<div class="header">
-							<img src="../../CSS/CONTENTS/logo.png"></img>
+							<img alt ="image"  src="../../CSS/CONTENTS/logo.png"></img>
 							<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 						</div>
-						<center>
-							<a href="#null" onclick="javascript:history.back();">Retour</a>
-						</center>
 						<xsl:apply-templates select="." />
 					</body>
 				</html>
 			</xsl:document>
 		</xsl:for-each>
 
-		<!-- Génération Page spécialité -->
+		<!-- Generation Page specialite -->
 		<xsl:for-each select="//specialite">
 			<xsl:document href="www/parcours/specialites/{@idSpecialite}.html">
-				<html xmlns="http://www.w3.org/1999/xhtml">
+				     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+				 <html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
 						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 						<link rel="stylesheet" type="text/css" href="../../../CSS/master.css" />
@@ -166,14 +172,12 @@
 					</head>
 					<body>
 						<div class="header">
-							<img src="../../../CSS/CONTENTS/logo.png"></img>
+							<img alt ="image"  src="../../../CSS/CONTENTS/logo.png"></img>
 							<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 						</div>
 						<div class="navigation">
 							<xsl:call-template name="menu">
-								<xsl:with-param name="link">
-									../
-								</xsl:with-param>
+								<xsl:with-param name="link">../</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<div class="body">
@@ -184,10 +188,11 @@
 			</xsl:document>
 		</xsl:for-each>
 
-		<!-- Génération enseignements HTML -->
+		<!-- Generation enseignements HTML -->
 		<xsl:for-each select="//enseignement">
 			<xsl:document href="www/enseignements/{@idEnseignement}.html">
-				<html xmlns="http://www.w3.org/1999/xhtml">
+				     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+				 <html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
 						<link rel="stylesheet" type="text/css" href="../../CSS/master.css" />
 						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -197,24 +202,20 @@
 					</head>
 					<body>
 						<div class="header">
-							<img src="../../CSS/CONTENTS/logo.png"></img>
+							<img alt ="image"  src="../../CSS/CONTENTS/logo.png"></img>
 							<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 						</div>
-						<div class="body">
-							<center>
-								<a href="#null" onclick="javascript:history.back();">Retour</a>
-							</center>
 							<xsl:apply-templates select="." />
-						</div>
 					</body>
 				</html>
 			</xsl:document>
 		</xsl:for-each>
 
-		<!-- Génération parcours HTML -->
+		<!-- Generation parcours HTML -->
 		<xsl:for-each select="//parcour">
 			<xsl:document href="www/parcours/{@idParcour}.html">
-				<html xmlns="http://www.w3.org/1999/xhtml">
+				     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+				 <html xmlns="http://www.w3.org/1999/xhtml">
 					<head>
 						<link rel="stylesheet" type="text/css" href="../../CSS/master.css" />
 						<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -224,19 +225,20 @@
 					</head>
 					<body>
 						<div class="header">
-							<img src="../../CSS/CONTENTS/logo.png"></img>
+							<img alt ="image"  src="../../CSS/CONTENTS/logo.png"></img>
 							<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 						</div>
 						<div class="navigation">
 							<xsl:call-template name="menu">
-								<xsl:with-param name="link"></xsl:with-param>
+								<xsl:with-param name="link" />
 							</xsl:call-template>
 						</div>
 						<div class="body">
-							<h1>
+							<div class="titre">
 								<xsl:value-of select="nom" />
-							</h1>
-							<h2>Responsables :</h2>
+							</div>
+							<div class="contenu">
+								Responsables :
 							<xsl:for-each select="ref-specialite">
 								<xsl:variable name="ref" select="@ref" />
 								<ul>
@@ -248,7 +250,7 @@
 									</xsl:for-each>
 								</ul>
 							</xsl:for-each>
-							<xsl:copy-of select="description" />
+							<xsl:value-of select="description" />
 							<br />
 							<xsl:for-each select="ref-specialite">
 								<xsl:variable name="ref" select="@ref" />
@@ -265,13 +267,15 @@
 								</ul>
 							</xsl:for-each>
 						</div>
+						</div>
 					</body>
 				</html>
 			</xsl:document>
 		</xsl:for-each>
 
 		<!-- Squelette de l' index HTML -->
-		<html>
+		     <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+		 <html>
 			<head>
 				<link rel="stylesheet" type="text/css" href="../CSS/master.css" />
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -279,18 +283,16 @@
 			</head>
 			<body>
 				<div class="header">
-					<img src="../CSS/CONTENTS/logo.png"></img>
+					<img src="../CSS/CONTENTS/logo.png" alt="logo"></img>
 					<h1>MASTER INFORMATIQUE DE MARSELLE</h1>
 				</div>
 				<div class="navigation">
 					<xsl:call-template name="menu">
-						<xsl:with-param name="link">
-							parcours/
-						</xsl:with-param>
+						<xsl:with-param name="link">parcours/</xsl:with-param>
 					</xsl:call-template>
 				</div>
 				<div class="body">
-					<xsl:copy-of select="description" />
+					<xsl:value-of select="description" />
 				</div>
 			</body>
 		</html>
@@ -307,7 +309,7 @@
 			</li>
 
 			<xsl:for-each select="//parcour">
-				<!-- Plus d'une specialité -->
+				<!-- Plus d'une specialite -->
 
 				<xsl:if test="count(ref-specialite) > 1 ">
 					<li>
@@ -328,7 +330,7 @@
 						</xsl:for-each>
 					</li>
 				</xsl:if>
-				<!-- Une seule specialité -->
+				<!-- Une seule specialite -->
 				<xsl:if test="count(ref-specialite) = 1 ">
 					<li>
 						<a href="{$link}specialites/{ref-specialite/@ref}.html">
@@ -342,7 +344,7 @@
 			<li>
 				<a href="{$link}listeEnseignements.html">
 					<strong>
-						Unités
+						Unites
 					</strong>
 				</a>
 			</li>
@@ -356,7 +358,7 @@
 		</ul>
 	</xsl:template>
 
-	<!-- Générer spécialités -->
+	<!-- Generer specialites -->
 	<xsl:template name="genererSpecialite">
 		<xsl:param name="link" />
 		<xsl:param name="ref" />
@@ -418,12 +420,13 @@
 	<!-- NOEUD INTERVENANT -->
 	<xsl:template match="intervenant">
 		<div id="{@idIntervenant}">
-			<center>
-				<h2>
+
+
+			<div class="body">			
+					<div class="titre">
 					<xsl:value-of select="nom" />
-				</h2>
-			</center>
-			<div class="body">
+				</div>
+			<div class ="contenu">
 				<ul>
 					<li>
 						Identifiant :
@@ -434,48 +437,60 @@
 						<xsl:value-of select="mail" />
 					</li>
 					<li>
-						Téléphone :
+						Telephone :
 						<xsl:value-of select="telephone" />
 					</li>
 					<li>
 						Etablissement :
 						<xsl:value-of select="etablissement" />
 					</li>
-					<br />
-
 				</ul>
 			</div>
+			<br/>
+						<center>
+							<a href="#" onclick="javascript:history.back();">Revenir a la liste</a>
+						</center>
 		</div>
+	</div>
 	</xsl:template>
 
 	<!-- NOEUD ENSEIGNEMENT -->
 	<xsl:template match="enseignement">
 		<div id="{@idEnseignement}">
-			<h2>
+			<div class="body">
+				<div class="titre">
 				<xsl:value-of select="nom" />
-			</h2>
+			</div>
+			<div class="contenu">
 			<ul>
 				<li>
 					Identifiant :
 					<xsl:value-of select="identifiant" />
 				</li>
 				<li>
-					Nombre de crédits
+					Nombre de credits
 					<xsl:value-of select="nombreCredit" />
 				</li>
 				<li>
-					Résumé :
+					Resume :
 					<xsl:value-of select="resume" />
 				</li>
 				<xsl:if test="pre-requis">
 					<li>
-						Prérequis :
+						Prerequis :
 						<xsl:value-of select="pre-requis" />
 					</li>
 				</xsl:if>
-				<br />
+
 
 			</ul>
+
+		</div>
+						<br/>
+						<center>
+							<a href="#" onclick="javascript:history.back();">Revenir a la liste</a>
+						</center>
+		</div>
 		</div>
 	</xsl:template>
 
@@ -483,8 +498,7 @@
 	<!-- Semestre -->
 	<xsl:template name="genererSemestre">
 		<xsl:param name="idSemestre" />
-		Programme du S
-		<xsl:value-of select="//semestre[@idSemestre = $idSemestre]/titre" />
+		Programme du S<xsl:value-of select="//semestre[@idSemestre = $idSemestre]/titre" />
 		<xsl:for-each select="//semestre[@idSemestre = $idSemestre]/ref-block">
 			<xsl:variable name="idBlock" select="@ref" />
 			<li>
@@ -514,7 +528,7 @@
 				(
 				<xsl:value-of
 					select="//enseignement[@idEnseignement = $idEnseignement]/nombreCredit" />
-				crédits)
+				credits)
 			</a>
 		</li>
 	</xsl:template>
@@ -548,21 +562,21 @@
 				Description
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="description" />
+				<xsl:value-of select="description" />
 			</div>
 		</xsl:if>
 		<xsl:if test="competences != ''">
 			<div class="titre">
-				Compétences à acquérir</div>
+				Competences a acquerir</div>
 			<div class="contenu">
-				<xsl:copy-of select="competences" />
+				<xsl:value-of select="competences" />
 			</div>
 		</xsl:if>
 		<xsl:if test="connaissances != ''">
 			<div class="titre">
-				Connaissances à acquérir</div>
+				Connaissances a acquerir</div>
 			<div class="contenu">
-				<xsl:copy-of select="connaissances" />
+				<xsl:value-of select="connaissances" />
 			</div>
 		</xsl:if>
 		<div class="titre">Programme et enseignements </div>
@@ -581,7 +595,7 @@
 				Politique des stages
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="politiqueDesStages" />
+				<xsl:value-of select="politiqueDesStages" />
 			</div>
 		</xsl:if>
 		<xsl:if test="aspects != ''">
@@ -589,43 +603,43 @@
 				Aspects formation et recherche
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="aspects" />
+				<xsl:value-of select="aspects" />
 			</div>
 		</xsl:if>
 		<xsl:if test="modalites != ''">
 			<div class="titre">
-				Modalité et recherche
+				Modalite et recherche
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="modalites" />
+				<xsl:value-of select="modalites" />
 			</div>
 		</xsl:if>
 		<xsl:if test="conditionAdmission != ''">
 			<div class="titre">
-				Condition d'admission et pré-requis
+				Condition d'admission et pre-requis
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="conditionAdmission" />
+				<xsl:value-of select="conditionAdmission" />
 			</div>
 		</xsl:if>
 		<xsl:if test="debouches != ''">
 			<div class="titre">
-				Débouchés
+				Debouches
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="debouches" />
+				<xsl:value-of select="debouches" />
 			</div>
 		</xsl:if>
 		<xsl:if test="poursuitesEtudes != ''">
 			<div class="titre">
-				Poursuites d'études
+				Poursuites d'etudes
 			</div>
 			<div class="contenu">
-				<xsl:copy-of select="poursuitesEtudes" />
+				<xsl:value-of select="poursuitesEtudes" />
 			</div>
 		</xsl:if>
 		<div class="contenu">
-			<xsl:copy-of select="autre" />
+			<xsl:value-of select="autre" />
 		</div>
 	</xsl:template>
 
